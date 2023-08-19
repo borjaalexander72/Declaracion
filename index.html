@@ -1,0 +1,120 @@
+<html>
+<head>
+    <style>
+        body {
+            background-color: #F0F0F0;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            width: 600px;
+            margin: 50px auto;
+            border: 5px solid #00FFFF;
+            border-radius: 20px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 36px;
+            color: #0000FF;
+        }
+
+        .buttons {
+            margin-top: 20px;
+        }
+
+        button {
+            width: 100px;
+            height: 50px;
+            font-size: 24px;
+            color: #FFFFFF;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        .yes {
+            background-color: #00FF00;
+        }
+
+        .no {
+            background-color: #FF0000;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: none;
+        }
+
+        .overlay-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #FFFFFF;
+            font-size: 48px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>¿Quieres ser mi novia?</h1>
+        <div class="buttons">
+            <button class="yes">Si</button>
+            <button class="no">No</button>
+        </div>
+    </div>
+    <div class="overlay">
+        <div class="overlay-content">
+            Sabía que ibas a decir que si jsjsjs
+        </div>
+    </div>
+    <audio id="applause" src="https://www.bing.com/th?id=OIP.4f6c2a7f3b4c6b7a9f8e3c5d6e9d7a4ao1&pid=Api&rs=1"></audio>
+    <script>
+        // Get the elements
+        var yesButton = document.querySelector(".yes");
+        var noButton = document.querySelector(".no");
+        var overlay = document.querySelector(".overlay");
+        var applause = document.getElementById("applause");
+
+        // Add event listeners
+        yesButton.addEventListener("click", function() {
+            // Show the overlay and play the sound
+            overlay.style.display = "block";
+            applause.play();
+        });
+
+        noButton.addEventListener("mouseover", function() {
+            // Move the button away from the mouse
+            var x = Math.random() * window.innerWidth - noButton.offsetWidth;
+            var y = Math.random() * window.innerHeight - noButton.offsetHeight;
+
+            // Make sure the button stays inside the window
+            x = Math.max(0, Math.min(x, window.innerWidth - noButton.offsetWidth));
+            y = Math.max(0, Math.min(y, window.innerHeight - noButton.offsetHeight));
+
+            // Set the new position of the button
+            noButton.style.position = "absolute";
+            noButton.style.left = x + "px";
+            noButton.style.top = y + "px";
+        });
+
+        window.addEventListener("beforeunload", function(event) {
+          // Cancel the event
+          event.preventDefault();
+          // Set the message to be displayed
+          event.returnValue = "¿Estás seguro de que quieres irte? Tal vez cambies de opinión...";
+          // Return the message
+          return event.returnValue;
+      });
+    </script>
+</body>
+</html>
+
+
